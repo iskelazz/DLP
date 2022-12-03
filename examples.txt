@@ -1,0 +1,28 @@
+sum = letrec sum : Nat -> Nat -> Nat =
+lambda n : Nat. lambda m : Nat. if iszero n then m else succ (sum (pred n) m) in
+sum
+;;
+
+prod = letrec prod : Nat -> Nat -> Nat =
+lambda n : Nat. lambda m : Nat. if iszero n then 0 else if iszero m then 0 else sum n (prod (pred m) n) in
+prod
+;;
+
+fib = letrec fib : Nat -> Nat = 
+lambda n : Nat. if iszero n then 1 else if iszero (pred n) then 1 else sum (fib (pred (pred n))) (fib (pred n)) in
+fib
+;;
+
+fact = letrec fact : Nat -> Nat =
+lambda n : Nat. if iszero n then 1 else prod n (fact (pred n)) in
+fact
+;;
+
+sum 24 35;
+prod 4 4;
+fib 10;
+fact 5;
+
+"Cad3n4";
+"cad3" ^ "n4";
+"" ^ ((Lx:String. x^"by") "ru");
